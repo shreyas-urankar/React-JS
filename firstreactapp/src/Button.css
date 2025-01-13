@@ -1,0 +1,22 @@
+.save-button{
+    background-color: red;
+    padding: 10px;
+    border: 10px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.save-button:hover{
+    border-color:blue;
+}
+
+.add-data{
+    background-color: red;
+    padding: 10px;
+    border: 10px solid transparent;
+    transition: border-color 0.3s ease;
+    margin: 4px;
+}
+
+.add-data:hover{
+    border-color:blue;
+}
