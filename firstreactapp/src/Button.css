@@ -20,3 +20,14 @@
 .add-data:hover{
     border-color:blue;
 }
+
+
+.pshow.hide{
+    background-color: red;
+    padding: 10px;
+}
+
+.pshow{
+    background-color: red;
+    padding: 10px;
+}
