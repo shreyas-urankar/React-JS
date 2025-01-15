@@ -1,0 +1,11 @@
+/* Button.module.css */
+.error {
+    background-color: red;
+    color: white;
+  }
+  
+  .warning {
+    background-color: yellow;
+    color: blue;
+  }
+  
