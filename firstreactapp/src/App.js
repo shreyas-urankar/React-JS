@@ -5,20 +5,25 @@ import catlogo from "./images/cat.jpeg";
 import Button from "./Button";
 import { useState } from "react";
 function App() {
-
   let template = "";
   let [count, setCount] = useState(1);
   let [pshow, setPshow] = useState(false);
   if (pshow) {
-    template=<>
-    <button className="pshow.hide" onClick={()=>setPshow(!pshow)}>Hide</button>
-    <p>Welcome to Shreyas's ReactJS</p>
-    </>
-  } 
-  else {
-    template = <button className="pshow" onClick={()=>setPshow(!pshow)}>Show pshow</button>;
+    template = (
+      <>
+        <button className="pshow.hide" onClick={() => setPshow(!pshow)}>
+          Hide
+        </button>
+        <p>Welcome to Shreyas's ReactJS</p>
+      </>
+    );
+  } else {
+    template = (
+      <button className="pshow" onClick={() => setPshow(!pshow)}>
+        Show pshow
+      </button>
+    );
   }
-
 
   let displayData = () => {
     // alert("We lcome to Shreyas's React Project")
@@ -28,7 +33,6 @@ function App() {
   let addData = (a, b) => {
     alert(a + b);
   };
-
 
   return (
     <div className="App">
