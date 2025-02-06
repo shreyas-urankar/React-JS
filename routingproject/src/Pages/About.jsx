@@ -6,14 +6,9 @@ export default function About() {
     <div>
       <Header/>
       <h1>About Page</h1>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis ea consequuntur omnis hic a voluptate repudiandae reprehenderit. Similique, nostrum sed! Aspernatur atque sequi, harum repellendus consectetur minus facilis culpa architecto?</p>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt blanditiis nesciunt velit iusto eius, exercitationem nobis atque optio amet voluptate eveniet quis numquam reiciendis aperiam perferendis sint officiis laborum? Aliquam?</p>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui deleniti sit reprehenderit atque nam ab ratione cumque explicabo repudiandae eos, adipisci amet magnam quas? Blanditiis tenetur nihil in officia sapiente.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime explicabo alias unde hic dolores. Repudiandae error nulla rerum ut praesentium tempora deleniti! Ab, sapiente natus officia voluptate expedita pariatur beatae?
-      </p>
+      <p>The Wellness Program Management System is designed to promote holistic well-being by offering features such as public and secure registration, session broadcasts on YouTube, and automated WhatsApp reminders. It empowers coaches to manage user engagement effectively, send personalized updates, and track user progress.</p>
+      <p>Through individual groups for users, coaches can deliver tailored content, including YouTube session links and feedback, fostering direct communication. The system also supports automated notifications to keep users informed about their attendance, progress, and areas needing improvement.</p>
+      <p>Additionally, the program focuses on helping students become independent by utilizing their skills effectively in the freelance market, particularly within the Indian ecosystem.</p>
     </div>
   )
 }
