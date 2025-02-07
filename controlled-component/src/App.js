@@ -1,4 +1,4 @@
-// App.js
+App.js
 import './App.css';
 import { useState } from 'react';
 
@@ -17,6 +17,7 @@ function App() {
         <div className='row'>
           <div className='col-lg-6'>
             <form onSubmit={handleSubmit}>
+              {/* Form or username */}
               <div className='text-start my-3'>
                 <label>UserName</label>
                 <input 
@@ -26,6 +27,8 @@ function App() {
                   value={uname} 
                 />
               </div>
+              {/* Form or username */}
+
               <div className='text-start my-3'>
                 <label>Password</label>
                 <input 
@@ -35,6 +38,7 @@ function App() {
                   value={password} 
                 />
               </div>
+            {/* Form for login button  */}
               <div className='text-start my-3'>
                 <button type='submit' className='btn btn-primary'>Login</button>
               </div>
