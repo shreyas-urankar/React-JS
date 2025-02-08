@@ -2,8 +2,9 @@ import "./App.css";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+
 function App() {
   let [formData, setFormData] = useState({
     uname: "",
@@ -14,6 +15,7 @@ function App() {
   });
 
   let [userData, setUserData] = useState([]);
+
   let getValue = (event) => {
     let oldData = { ...formData };
     let inputName = event.target.name;
@@ -23,6 +25,8 @@ function App() {
   };
 
   let handleSubmit = (event) => {
+    event.preventDefault();
+
     let currentUserFormdata = {
       uname: formData.uname,
       uemail: formData.uemail,
@@ -30,37 +34,63 @@ function App() {
       umessage: formData.umessage,
     };
 
-    let checkFilterUser = userData.filter(
-      (v) => (v.uemail === formData.uemail || v.uphone === formData.uphone)
-    );
+    if (formData.index === "") {
+      let checkFilterUser = userData.filter(
+        (v) => v.uemail === formData.uemail || v.uphone === formData.uphone
+      );
 
-    if (checkFilterUser.length === 1) {
-      toast.error("Email-Id or Phone Number already Exists ")
+      if (checkFilterUser.length === 1) {
+        toast.error("Email-Id or Phone Number already Exists ");
+      } else {
+        let oldUserData = [...userData, currentUserFormdata];
+        setUserData(oldUserData);
+        toast.success("Data Saved Successfully");
+        setFormData({
+          uname: "",
+          uemail: "",
+          uphone: "",
+          umessage: "",
+          index: "",
+        });
+      }
     } else {
-      let oldUserData = [...userData, currentUserFormdata];
-      console.log(oldUserData);
-      setUserData(oldUserData);
-      setFormData({
-        uname: "",
-        uemail: "",
-        uphone: "",
-        umessage: "",
-        index: "",
-      });
-    }
-    event.preventDefault();
-  };
+      let editIndex = parseInt(formData.index);
+      let checkFilterUser = userData.filter(
+        (v, i) => (v.uemail === formData.uemail || v.uphone === formData.uphone) && i !== editIndex
+      );
 
-  console.log(formData);
+      if (checkFilterUser.length === 0) {
+        toast.success("You have successfully updated the details");
+        let updatedData = [...userData];
+        updatedData[editIndex] = currentUserFormdata;
+        setUserData(updatedData);
+        setFormData({
+          uname: "",
+          uemail: "",
+          uphone: "",
+          umessage: "",
+          index: "",
+        });
+      } else {
+        toast.error("Email-Id or Phone Number already Exists ");
+      }
+    }
+  };
 
   let deleteRow = (indexNumber) => {
-    let filterDataafterDelete = userData.filter((v, i) => i !== indexNumber)
-    toast.success("Data Delete. ")
-    setUserData(filterDataafterDelete)
+    let filterDataafterDelete = userData.filter((v, i) => i !== indexNumber);
+    toast.success("Data Deleted Successfully");
+    setUserData(filterDataafterDelete);
   };
+
+  let editRow = (indexNumber) => {
+    let editData = userData[indexNumber];
+    setFormData({ ...editData, index: indexNumber.toString() });
+  };
+
   return (
     <Container fluid>
-      <ToastContainer/>
+      <ToastContainer />
       <Container>
         <Row>
           <Col className="text-center py-5">
@@ -69,7 +99,6 @@ function App() {
         </Row>
         <Row>
           <Col lg={5}>
-            {userData.length}
             <form onSubmit={handleSubmit}>
               <div className="pb-3">
                 <label className="form-label">Name</label>
@@ -79,17 +108,19 @@ function App() {
                   value={formData.uname}
                   name="uname"
                   className="form-control"
+                  required
                 />
               </div>
 
               <div className="pb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   onChange={getValue}
                   value={formData.uemail}
                   name="uemail"
                   className="form-control"
+                  required
                 />
               </div>
 
@@ -101,6 +132,7 @@ function App() {
                   value={formData.uphone}
                   name="uphone"
                   className="form-control"
+                  required
                 />
               </div>
 
@@ -112,6 +144,7 @@ function App() {
                   value={formData.umessage}
                   className="form-control"
                   rows="3"
+                  required
                 />
               </div>
 
@@ -135,23 +168,19 @@ function App() {
               </thead>
               <tbody>
                 {userData.length >= 1 ? (
-                  userData.map((obj, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>{obj.uname}</td>
-                        <td>{obj.uemail}</td>
-                        <td>{obj.uphone}</td>
-                        <td>{obj.umessage}</td>
-                        <td>
-                          <button onClick={() => deleteRow(i)}>
-                            Delete
-                          </button>
-                          <button>Edit</button>
-                        </td>
-                      </tr>
-                    );
-                  })
+                  userData.map((obj, i) => (
+                    <tr key={i}>
+                      <td>{i + 1}</td>
+                      <td>{obj.uname}</td>
+                      <td>{obj.uemail}</td>
+                      <td>{obj.uphone}</td>
+                      <td>{obj.umessage}</td>
+                      <td>
+                        <button onClick={() => deleteRow(i)}>Delete</button>
+                        <button onClick={() => editRow(i)}>Update</button>
+                      </td>
+                    </tr>
+                  ))
                 ) : (
                   <tr>
                     <td colSpan={6}>No Data Found</td>
