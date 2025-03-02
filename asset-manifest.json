@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cyber-protect-app/static/css/main.ee96ff70.css",
+    "main.js": "/cyber-protect-app/static/js/main.b0883235.js",
+    "index.html": "/cyber-protect-app/index.html",
+    "main.ee96ff70.css.map": "/cyber-protect-app/static/css/main.ee96ff70.css.map",
+    "main.b0883235.js.map": "/cyber-protect-app/static/js/main.b0883235.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee96ff70.css",
+    "static/js/main.b0883235.js"
+  ]
+}
