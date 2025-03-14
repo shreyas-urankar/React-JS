@@ -13,14 +13,25 @@ function App() {
     alert("Para ke upar mouse lekar aaye ho!")
   }
 
-  function handleInputChange()
+  function handleInputChange(e)
   {
-    alert("Input me  value change hui he!")
+    console.log("Input me  value change hui he!", e.target.value)
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    alert("Form submit kardu kya?")
   }
   return (
     <div>
-      <form>
+
+      <button onClick={()=>alert("Button click hua he")}>Click me</button>
+      <br/>
+      <br/>
+      <br/>
+      <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleInputChange} />
+        <button type='submit'>Submit</button>
       </form>
       <p onMouseOver={handleMouseOver} style={{border:"2px solid black", background:"red"}}>
         I am a paragraph!
